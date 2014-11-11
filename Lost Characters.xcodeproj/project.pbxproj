@@ -10,11 +10,13 @@
 		4F3DFAEC1A12B836006814FF /* main.m in Sources */ = {isa = PBXBuildFile; fileRef = 4F3DFAEB1A12B836006814FF /* main.m */; };
 		4F3DFAEF1A12B836006814FF /* AppDelegate.m in Sources */ = {isa = PBXBuildFile; fileRef = 4F3DFAEE1A12B836006814FF /* AppDelegate.m */; };
 		4F3DFAF21A12B836006814FF /* Lost_Characters.xcdatamodeld in Sources */ = {isa = PBXBuildFile; fileRef = 4F3DFAF01A12B836006814FF /* Lost_Characters.xcdatamodeld */; };
-		4F3DFAF51A12B836006814FF /* ViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 4F3DFAF41A12B836006814FF /* ViewController.m */; };
+		4F3DFAF51A12B836006814FF /* RootViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 4F3DFAF41A12B836006814FF /* RootViewController.m */; };
 		4F3DFAF81A12B836006814FF /* Main.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 4F3DFAF61A12B836006814FF /* Main.storyboard */; };
 		4F3DFAFA1A12B836006814FF /* Images.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 4F3DFAF91A12B836006814FF /* Images.xcassets */; };
 		4F3DFAFD1A12B836006814FF /* LaunchScreen.xib in Resources */ = {isa = PBXBuildFile; fileRef = 4F3DFAFB1A12B836006814FF /* LaunchScreen.xib */; };
 		4F3DFB091A12B836006814FF /* Lost_CharactersTests.m in Sources */ = {isa = PBXBuildFile; fileRef = 4F3DFB081A12B836006814FF /* Lost_CharactersTests.m */; };
+		4F3DFB131A12BA55006814FF /* lost.plist in Resources */ = {isa = PBXBuildFile; fileRef = 4F3DFB121A12BA55006814FF /* lost.plist */; };
+		4F3DFB161A12D003006814FF /* EditCharacterViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 4F3DFB151A12D003006814FF /* EditCharacterViewController.m */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
@@ -34,14 +36,17 @@
 		4F3DFAED1A12B836006814FF /* AppDelegate.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = AppDelegate.h; sourceTree = "<group>"; };
 		4F3DFAEE1A12B836006814FF /* AppDelegate.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = AppDelegate.m; sourceTree = "<group>"; };
 		4F3DFAF11A12B836006814FF /* Lost_Characters.xcdatamodel */ = {isa = PBXFileReference; lastKnownFileType = wrapper.xcdatamodel; path = Lost_Characters.xcdatamodel; sourceTree = "<group>"; };
-		4F3DFAF31A12B836006814FF /* ViewController.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = ViewController.h; sourceTree = "<group>"; };
-		4F3DFAF41A12B836006814FF /* ViewController.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = ViewController.m; sourceTree = "<group>"; };
+		4F3DFAF31A12B836006814FF /* RootViewController.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = RootViewController.h; sourceTree = "<group>"; };
+		4F3DFAF41A12B836006814FF /* RootViewController.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = RootViewController.m; sourceTree = "<group>"; };
 		4F3DFAF71A12B836006814FF /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Base.lproj/Main.storyboard; sourceTree = "<group>"; };
 		4F3DFAF91A12B836006814FF /* Images.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = Images.xcassets; sourceTree = "<group>"; };
 		4F3DFAFC1A12B836006814FF /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.xib; name = Base; path = Base.lproj/LaunchScreen.xib; sourceTree = "<group>"; };
 		4F3DFB021A12B836006814FF /* Lost CharactersTests.xctest */ = {isa = PBXFileReference; explicitFileType = wrapper.cfbundle; includeInIndex = 0; path = "Lost CharactersTests.xctest"; sourceTree = BUILT_PRODUCTS_DIR; };
 		4F3DFB071A12B836006814FF /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
 		4F3DFB081A12B836006814FF /* Lost_CharactersTests.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = Lost_CharactersTests.m; sourceTree = "<group>"; };
+		4F3DFB121A12BA55006814FF /* lost.plist */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.plist.xml; path = lost.plist; sourceTree = "<group>"; };
+		4F3DFB141A12D002006814FF /* EditCharacterViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = EditCharacterViewController.h; sourceTree = "<group>"; };
+		4F3DFB151A12D003006814FF /* EditCharacterViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = EditCharacterViewController.m; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -85,8 +90,10 @@
 			children = (
 				4F3DFAED1A12B836006814FF /* AppDelegate.h */,
 				4F3DFAEE1A12B836006814FF /* AppDelegate.m */,
-				4F3DFAF31A12B836006814FF /* ViewController.h */,
-				4F3DFAF41A12B836006814FF /* ViewController.m */,
+				4F3DFAF31A12B836006814FF /* RootViewController.h */,
+				4F3DFAF41A12B836006814FF /* RootViewController.m */,
+				4F3DFB141A12D002006814FF /* EditCharacterViewController.h */,
+				4F3DFB151A12D003006814FF /* EditCharacterViewController.m */,
 				4F3DFAF61A12B836006814FF /* Main.storyboard */,
 				4F3DFAF91A12B836006814FF /* Images.xcassets */,
 				4F3DFAFB1A12B836006814FF /* LaunchScreen.xib */,
@@ -100,6 +107,7 @@
 			isa = PBXGroup;
 			children = (
 				4F3DFAEA1A12B836006814FF /* Info.plist */,
+				4F3DFB121A12BA55006814FF /* lost.plist */,
 				4F3DFAEB1A12B836006814FF /* main.m */,
 			);
 			name = "Supporting Files";
@@ -204,6 +212,7 @@
 			files = (
 				4F3DFAF81A12B836006814FF /* Main.storyboard in Resources */,
 				4F3DFAFD1A12B836006814FF /* LaunchScreen.xib in Resources */,
+				4F3DFB131A12BA55006814FF /* lost.plist in Resources */,
 				4F3DFAFA1A12B836006814FF /* Images.xcassets in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
@@ -224,7 +233,8 @@
 			files = (
 				4F3DFAEF1A12B836006814FF /* AppDelegate.m in Sources */,
 				4F3DFAF21A12B836006814FF /* Lost_Characters.xcdatamodeld in Sources */,
-				4F3DFAF51A12B836006814FF /* ViewController.m in Sources */,
+				4F3DFAF51A12B836006814FF /* RootViewController.m in Sources */,
+				4F3DFB161A12D003006814FF /* EditCharacterViewController.m in Sources */,
 				4F3DFAEC1A12B836006814FF /* main.m in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
