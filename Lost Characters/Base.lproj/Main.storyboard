@@ -62,9 +62,10 @@
                     </view>
                     <navigationItem key="navigationItem" id="VzS-db-EJS">
                         <nil key="title"/>
-                        <textField key="titleView" opaque="NO" clipsSubviews="YES" contentMode="scaleToFill" contentHorizontalAlignment="left" contentVerticalAlignment="center" borderStyle="roundedRect" minimumFontSize="17" id="1jQ-Cu-DyV">
+                        <textField key="titleView" opaque="NO" clipsSubviews="YES" contentMode="scaleToFill" contentHorizontalAlignment="left" contentVerticalAlignment="center" borderStyle="roundedRect" placeholder="Enter new character to add" minimumFontSize="17" id="1jQ-Cu-DyV">
                             <rect key="frame" x="55" y="7" width="210" height="30"/>
                             <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
+                            <color key="backgroundColor" red="0.40000000596046448" green="0.80000001192092896" blue="1" alpha="0.32000000000000001" colorSpace="calibratedRGB"/>
                             <fontDescription key="fontDescription" type="system" pointSize="14"/>
                             <textInputTraits key="textInputTraits"/>
                             <connections>
@@ -73,7 +74,7 @@
                         </textField>
                         <barButtonItem key="rightBarButtonItem" systemItem="add" id="lIu-76-Boe">
                             <connections>
-                                <action selector="onPlusButtonPressed:" destination="vXZ-lx-hvc" id="xHH-9o-Ihw"/>
+                                <action selector="onPlusButtonPressed:" destination="vXZ-lx-hvc" id="Xwv-3G-ID7"/>
                             </connections>
                         </barButtonItem>
                     </navigationItem>

@@ -81,12 +81,31 @@
     return cell;
 }
 
-//#pragma mark Add Character
-//
-//- (IBAction)onPlusButtonPressed:(UIBarButtonItem *)sender
-//{
-////    NSManagedObject *character =
-//}
+#pragma mark Add Character
+
+- (IBAction)onPlusButtonPressed:(UIBarButtonItem *)sender
+{
+    if ([self.textField.text isEqualToString:@""])
+    {
+        UIAlertController *alert = [UIAlertController alertControllerWithTitle:@"Field is empty"
+                                                                       message:@"Please enter a valid name"
+                                                                preferredStyle:UIAlertControllerStyleAlert];
+
+        UIAlertAction *okButton = [UIAlertAction actionWithTitle:@"OK"
+                                                           style:UIAlertActionStyleDefault
+                                                         handler:nil];
+        [alert addAction:okButton];
+        [self presentViewController:alert
+                           animated:YES
+                         completion:nil];
+    }
+
+    else
+    {
+        NSManagedObject *character = [NSEntityDescription insertNewObjectForEntityForName:@"Character" inManagedObjectContext:self.moc];
+        [character setValue:self.textField.text forKey:@"name"];
+    }
+}
 
 
 
