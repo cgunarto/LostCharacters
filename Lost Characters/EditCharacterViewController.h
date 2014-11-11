@@ -7,7 +7,12 @@
 //
 
 #import <UIKit/UIKit.h>
+#import "AppDelegate.h"
+
 
 @interface EditCharacterViewController : UIViewController
+@property NSManagedObjectContext *moc;
+@property NSManagedObject *chosenCharacter;
+
 
 @end

@@ -8,6 +8,7 @@
 
 #import "RootViewController.h"
 #import "AppDelegate.h"
+#import "EditCharacterViewController.h"
 
 
 @interface RootViewController () <UITableViewDelegate, UITableViewDataSource>
@@ -81,6 +82,7 @@
     return cell;
 }
 
+
 #pragma mark Add Character
 
 - (IBAction)onPlusButtonPressed:(UIBarButtonItem *)sender
@@ -105,6 +107,18 @@
         NSManagedObject *character = [NSEntityDescription insertNewObjectForEntityForName:@"Character" inManagedObjectContext:self.moc];
         [character setValue:self.textField.text forKey:@"name"];
     }
+}
+
+#pragma mark Segue
+
+- (void)prepareForSegue:(UIStoryboardSegue *)segue sender:(id)sender
+{
+    EditCharacterViewController *editCharacterVC = segue.destinationViewController;
+    editCharacterVC.moc = self.moc;
+
+    NSIndexPath *indexPath = [self.tableView indexPathForSelectedRow];
+    NSManagedObject *chosenCharacter = self.characters[indexPath.row];
+    editCharacterVC.chosenCharacter = chosenCharacter;
 }
 
 
