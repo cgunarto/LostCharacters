@@ -102,10 +102,22 @@
     return YES;
 }
 
-- (void)tableView:(UITableView *)tableView commitEditingStyle:(UITableViewCellEditingStyle)editingStyle forRowAtIndexPath:(NSIndexPath *)indexPath {
+- (void)tableView:(UITableView *)tableView commitEditingStyle:(UITableViewCellEditingStyle)editingStyle forRowAtIndexPath:(NSIndexPath *)indexPath
+{
     if (editingStyle == UITableViewCellEditingStyleDelete)
     {
-        //add code here for when you hit delete
+        NSManagedObject *characterToDelete = self.characters[indexPath.row];
+        [self.moc deleteObject:characterToDelete];
+        [self.moc save:nil];
+
+        NSFetchRequest *request = [[NSFetchRequest alloc]initWithEntityName:@"Character"];
+        NSError *error;
+        self.characters = [self.moc executeFetchRequest:request error:&error];
+
+        NSSortDescriptor *sortByName = [[NSSortDescriptor alloc] initWithKey:@"name" ascending:YES];
+        request.sortDescriptors = @[sortByName];
+
+        [self.tableView reloadData];
     }
 }
 

@@ -78,9 +78,37 @@
 
 -(BOOL)textFieldShouldEndEditing:(UITextField *)textField
 {
+    //Changing name
+    if ([textField isEqual:self.nameTextField])
+    {
+        [self.chosenCharacter setValue:self.nameTextField.text forKey:@"name"];
+    }
+    //Changing age
+    if ([textField isEqual:self.ageTextField])
+    {
+        NSString *ageString = self.ageTextField.text;
+        NSNumber *age = [NSNumber numberWithInteger:[ageString integerValue]];
+        [self.chosenCharacter setValue:age forKey:@"age"];
+    }
+    //Changing seat number
+    if ([textField isEqual:self.seatTextField])
+    {
+        [self.chosenCharacter setValue:self.seatTextField.text forKey:@"seatNumber"];
+    }
+    //Changing occupation
     if ([textField isEqual:self.occupationTextField])
     {
-        [self.chosenCharacter setValue:textField.text forKey:@"occupation"];
+        [self.chosenCharacter setValue:self.occupationTextField.text forKey:@"occupation"];
+    }
+    //Changing gender
+    if ([textField isEqual:self.genderTextField])
+    {
+        [self.chosenCharacter setValue:self.genderTextField.text forKey:@"gender"];
+    }
+    //Changing actor name
+    if ([textField isEqual:self.actorNameTextField])
+    {
+        [self.chosenCharacter setValue:self.actorNameTextField.text forKey:@"actor"];
     }
 
     [self.moc save:nil];
