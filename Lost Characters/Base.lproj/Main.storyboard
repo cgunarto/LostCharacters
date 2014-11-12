@@ -30,8 +30,8 @@
                                                 <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Name" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" minimumScaleFactor="0.5" translatesAutoresizingMaskIntoConstraints="NO" id="esN-BA-LT2">
                                                     <rect key="frame" x="133" y="24" width="154" height="21"/>
                                                     <constraints>
-                                                        <constraint firstAttribute="width" constant="154" id="5by-xL-Tfp"/>
-                                                        <constraint firstAttribute="height" constant="21" id="tJy-TQ-Bfp"/>
+                                                        <constraint firstAttribute="width" constant="154" id="fZx-ek-1Sm"/>
+                                                        <constraint firstAttribute="height" constant="21" id="tRe-ED-a3p"/>
                                                     </constraints>
                                                     <fontDescription key="fontDescription" name="Futura-CondensedExtraBold" family="Futura" pointSize="20"/>
                                                     <color key="textColor" cocoaTouchSystemColor="darkTextColor"/>
@@ -40,8 +40,8 @@
                                                 <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Seat" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="Cms-li-xcX">
                                                     <rect key="frame" x="236" y="43" width="35" height="21"/>
                                                     <constraints>
-                                                        <constraint firstAttribute="width" constant="35" id="Gnn-yq-sOJ"/>
-                                                        <constraint firstAttribute="height" constant="21" id="yQN-XU-5IJ"/>
+                                                        <constraint firstAttribute="height" constant="21" id="gFP-gc-z0s"/>
+                                                        <constraint firstAttribute="width" constant="35" id="nIn-rt-xpr"/>
                                                     </constraints>
                                                     <fontDescription key="fontDescription" name="Futura-Medium" family="Futura" pointSize="15"/>
                                                     <color key="textColor" red="0.0" green="0.50196081399917603" blue="0.25098040699958801" alpha="1" colorSpace="calibratedRGB"/>
@@ -50,8 +50,8 @@
                                                 <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Age" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="v6g-YN-DX0">
                                                     <rect key="frame" x="133" y="43" width="31" height="21"/>
                                                     <constraints>
-                                                        <constraint firstAttribute="height" constant="21" id="l6h-Tb-R53"/>
-                                                        <constraint firstAttribute="width" constant="31" id="te3-wB-npA"/>
+                                                        <constraint firstAttribute="width" constant="31" id="cjI-el-77c"/>
+                                                        <constraint firstAttribute="height" constant="21" id="yf8-eN-Xqy"/>
                                                     </constraints>
                                                     <fontDescription key="fontDescription" name="Futura-CondensedMedium" family="Futura" pointSize="17"/>
                                                     <color key="textColor" cocoaTouchSystemColor="darkTextColor"/>
@@ -60,8 +60,8 @@
                                                 <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Actor" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="xcA-sd-Kem">
                                                     <rect key="frame" x="133" y="83" width="125" height="21"/>
                                                     <constraints>
-                                                        <constraint firstAttribute="width" constant="125" id="ttO-wf-hic"/>
-                                                        <constraint firstAttribute="height" constant="21" id="xIv-Eq-WsW"/>
+                                                        <constraint firstAttribute="width" constant="125" id="GgX-ok-VQ6"/>
+                                                        <constraint firstAttribute="height" constant="21" id="OUH-0l-fBY"/>
                                                     </constraints>
                                                     <fontDescription key="fontDescription" name="Futura-MediumItalic" family="Futura" pointSize="14"/>
                                                     <color key="textColor" red="0.40000000596046448" green="0.40000000596046448" blue="0.40000000596046448" alpha="1" colorSpace="calibratedRGB"/>
@@ -70,8 +70,8 @@
                                                 <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Gender" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="XCJ-M6-kxV">
                                                     <rect key="frame" x="159" y="43" width="57" height="21"/>
                                                     <constraints>
-                                                        <constraint firstAttribute="height" constant="21" id="ZJS-9u-xRf"/>
-                                                        <constraint firstAttribute="width" constant="57" id="iSA-RC-3dt"/>
+                                                        <constraint firstAttribute="width" constant="57" id="mkr-Yk-XJV"/>
+                                                        <constraint firstAttribute="height" constant="21" id="pv0-Wc-Fv6"/>
                                                     </constraints>
                                                     <fontDescription key="fontDescription" name="Futura-CondensedMedium" family="Futura" pointSize="17"/>
                                                     <color key="textColor" cocoaTouchSystemColor="darkTextColor"/>
@@ -80,36 +80,36 @@
                                                 <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Occupation" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="gtB-Qe-XxM">
                                                     <rect key="frame" x="133" y="62" width="89" height="21"/>
                                                     <constraints>
-                                                        <constraint firstAttribute="height" constant="21" id="iMY-YW-piu"/>
-                                                        <constraint firstAttribute="width" constant="89" id="mJ9-eX-JKe"/>
+                                                        <constraint firstAttribute="height" constant="21" id="TzA-oz-vYQ"/>
+                                                        <constraint firstAttribute="width" constant="89" id="weL-gt-LP2"/>
                                                     </constraints>
                                                     <fontDescription key="fontDescription" name="Futura-CondensedMedium" family="Futura" pointSize="17"/>
                                                     <color key="textColor" cocoaTouchSystemColor="darkTextColor"/>
                                                     <nil key="highlightedColor"/>
                                                 </label>
-                                                <imageView userInteractionEnabled="NO" contentMode="scaleAspectFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" misplaced="YES" translatesAutoresizingMaskIntoConstraints="NO" id="0jc-mu-Q02">
+                                                <imageView userInteractionEnabled="NO" contentMode="scaleAspectFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" translatesAutoresizingMaskIntoConstraints="NO" id="0jc-mu-Q02">
                                                     <rect key="frame" x="27" y="24" width="80" height="80"/>
                                                     <constraints>
-                                                        <constraint firstAttribute="width" constant="80" id="1mD-LH-zJu"/>
-                                                        <constraint firstAttribute="height" constant="80" id="YwT-sy-w6w"/>
+                                                        <constraint firstAttribute="height" constant="80" id="Dz9-BL-T0a"/>
+                                                        <constraint firstAttribute="width" constant="80" id="T9q-BO-7Vw"/>
                                                     </constraints>
                                                 </imageView>
                                             </subviews>
                                             <constraints>
-                                                <constraint firstItem="xcA-sd-Kem" firstAttribute="top" secondItem="gtB-Qe-XxM" secondAttribute="bottom" id="9N5-bS-eh7"/>
-                                                <constraint firstItem="XCJ-M6-kxV" firstAttribute="top" secondItem="PbF-Gx-mUw" secondAttribute="topMargin" constant="35" id="AB4-1E-sR6"/>
-                                                <constraint firstItem="gtB-Qe-XxM" firstAttribute="top" secondItem="esN-BA-LT2" secondAttribute="bottom" constant="17" id="Jyx-VR-CPr"/>
-                                                <constraint firstItem="Cms-li-xcX" firstAttribute="top" secondItem="PbF-Gx-mUw" secondAttribute="topMargin" constant="35" id="M9s-sa-1Kn"/>
-                                                <constraint firstItem="0jc-mu-Q02" firstAttribute="top" secondItem="PbF-Gx-mUw" secondAttribute="topMargin" constant="15" id="N9k-tx-0eT"/>
-                                                <constraint firstItem="XCJ-M6-kxV" firstAttribute="leading" secondItem="0jc-mu-Q02" secondAttribute="trailing" constant="52" id="Orm-n0-cqT"/>
-                                                <constraint firstItem="v6g-YN-DX0" firstAttribute="leading" secondItem="0jc-mu-Q02" secondAttribute="trailing" constant="26" id="Q8J-a5-4eA"/>
-                                                <constraint firstItem="xcA-sd-Kem" firstAttribute="leading" secondItem="0jc-mu-Q02" secondAttribute="trailing" constant="26" id="Spo-rV-4am"/>
-                                                <constraint firstItem="v6g-YN-DX0" firstAttribute="top" secondItem="PbF-Gx-mUw" secondAttribute="topMargin" constant="35" id="XNw-cm-xxN"/>
-                                                <constraint firstItem="gtB-Qe-XxM" firstAttribute="leading" secondItem="0jc-mu-Q02" secondAttribute="trailing" constant="26" id="ZEp-0J-auA"/>
-                                                <constraint firstItem="esN-BA-LT2" firstAttribute="top" secondItem="PbF-Gx-mUw" secondAttribute="topMargin" constant="16" id="e8R-ig-e74"/>
-                                                <constraint firstAttribute="trailingMargin" secondItem="Cms-li-xcX" secondAttribute="trailing" constant="8" id="m4s-LO-op7"/>
-                                                <constraint firstItem="esN-BA-LT2" firstAttribute="leading" secondItem="0jc-mu-Q02" secondAttribute="trailing" constant="26" id="vXH-0T-0xk"/>
-                                                <constraint firstItem="0jc-mu-Q02" firstAttribute="leading" secondItem="PbF-Gx-mUw" secondAttribute="leadingMargin" constant="19" id="zUg-gB-XKk"/>
+                                                <constraint firstItem="Cms-li-xcX" firstAttribute="top" secondItem="PbF-Gx-mUw" secondAttribute="topMargin" constant="35" id="2td-si-GEn"/>
+                                                <constraint firstItem="xcA-sd-Kem" firstAttribute="leading" secondItem="0jc-mu-Q02" secondAttribute="trailing" constant="26" id="7j2-IZ-YUl"/>
+                                                <constraint firstItem="v6g-YN-DX0" firstAttribute="top" secondItem="PbF-Gx-mUw" secondAttribute="topMargin" constant="35" id="Bnq-PS-mpX"/>
+                                                <constraint firstItem="gtB-Qe-XxM" firstAttribute="top" secondItem="esN-BA-LT2" secondAttribute="bottom" constant="17" id="Fu7-Io-LSM"/>
+                                                <constraint firstItem="0jc-mu-Q02" firstAttribute="top" secondItem="PbF-Gx-mUw" secondAttribute="topMargin" constant="16" id="O57-I4-cpD"/>
+                                                <constraint firstItem="v6g-YN-DX0" firstAttribute="leading" secondItem="0jc-mu-Q02" secondAttribute="trailing" constant="26" id="OTs-BK-D7M"/>
+                                                <constraint firstAttribute="trailingMargin" secondItem="Cms-li-xcX" secondAttribute="trailing" constant="8" id="Ppq-j9-9MX"/>
+                                                <constraint firstItem="XCJ-M6-kxV" firstAttribute="leading" secondItem="0jc-mu-Q02" secondAttribute="trailing" constant="52" id="Sxu-eU-F5c"/>
+                                                <constraint firstItem="XCJ-M6-kxV" firstAttribute="top" secondItem="PbF-Gx-mUw" secondAttribute="topMargin" constant="35" id="XSf-mV-PHq"/>
+                                                <constraint firstItem="0jc-mu-Q02" firstAttribute="leading" secondItem="PbF-Gx-mUw" secondAttribute="leadingMargin" constant="19" id="ZNf-NO-ytW"/>
+                                                <constraint firstItem="esN-BA-LT2" firstAttribute="top" secondItem="PbF-Gx-mUw" secondAttribute="topMargin" constant="16" id="c0A-Zq-tzr"/>
+                                                <constraint firstItem="gtB-Qe-XxM" firstAttribute="leading" secondItem="0jc-mu-Q02" secondAttribute="trailing" constant="26" id="eJe-md-D4u"/>
+                                                <constraint firstItem="esN-BA-LT2" firstAttribute="leading" secondItem="0jc-mu-Q02" secondAttribute="trailing" constant="26" id="mRy-Mh-L1r"/>
+                                                <constraint firstItem="xcA-sd-Kem" firstAttribute="top" secondItem="gtB-Qe-XxM" secondAttribute="bottom" id="rHL-Hi-mEV"/>
                                             </constraints>
                                         </tableViewCellContentView>
                                         <connections>
