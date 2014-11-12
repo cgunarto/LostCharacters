@@ -101,7 +101,7 @@
     passengerCell.genderLabel.text = [character valueForKey:@"gender"];
 
     NSData *imageData = [character valueForKey:@"image"];
-    passengerCell.imageView.image =  [UIImage imageWithData:imageData];
+    passengerCell.profileImageView.image =  [UIImage imageWithData:imageData];
 
     NSString *ageString = [NSString stringWithFormat:@"%@",[character valueForKey:@"age"]];
     passengerCell.ageLabel.text = ageString;
