@@ -4,11 +4,12 @@
         <attribute name="actor" optional="YES" attributeType="String" syncable="YES"/>
         <attribute name="age" optional="YES" attributeType="Integer 16" defaultValueString="0" syncable="YES"/>
         <attribute name="gender" optional="YES" attributeType="String" syncable="YES"/>
+        <attribute name="image" optional="YES" attributeType="Binary" syncable="YES"/>
         <attribute name="name" optional="YES" attributeType="String" syncable="YES"/>
         <attribute name="occupation" optional="YES" attributeType="String" syncable="YES"/>
         <attribute name="seatNumber" optional="YES" attributeType="String" syncable="YES"/>
     </entity>
     <elements>
-        <element name="Character" positionX="-54" positionY="-9" width="128" height="135"/>
+        <element name="Character" positionX="-54" positionY="-9" width="128" height="150"/>
     </elements>
 </model>

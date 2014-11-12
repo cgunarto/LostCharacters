@@ -29,13 +29,13 @@
 - (void)viewDidLoad
 {
     [super viewDidLoad];
-    [self setCharacterLabelInfo];
+    [self setCharacterLabelAndImageInfo];
     [self disableAllTextFieldEditing];
     self.capturedImages = [@[]mutableCopy];
 
 }
 
-- (void)setCharacterLabelInfo
+- (void)setCharacterLabelAndImageInfo
 {
     NSString *characterName = [self.chosenCharacter valueForKey:@"name"];
     self.nameTextField.placeholder = characterName;
@@ -61,6 +61,11 @@
     if ([self.chosenCharacter valueForKey:@"occupation"] != nil)
     {
         self.occupationTextField.text = [self.chosenCharacter valueForKey:@"occupation"];
+    }
+    if ([self.chosenCharacter valueForKey:@"image"] != nil)
+    {
+        NSData *imageData = [self.chosenCharacter valueForKey:@"image"];
+        self.imageView.image = [UIImage imageWithData:imageData];
     }
 }
 
@@ -141,7 +146,15 @@
 {
     UIImage *image = [info valueForKey:UIImagePickerControllerOriginalImage];
     [self dismissViewControllerAnimated:YES completion:NULL];
+
+    //save image NSData into moc and save it
+    NSData *imageData = UIImagePNGRepresentation(image);
+    [self.chosenCharacter setValue:imageData forKey:@"image"];
+    [self.moc save:nil];
+
+    //set imageView
     [self.imageView setImage:image];
+
     self.imagePickerController = nil;
 
 }
