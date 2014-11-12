@@ -14,7 +14,7 @@
 @interface RootViewController () <UITableViewDelegate, UITableViewDataSource>
 
 @property NSManagedObjectContext *moc;
-@property NSArray *characters;
+@property NSMutableArray *characters;
 @property NSArray *lostPlistArray;
 @property (weak, nonatomic) IBOutlet UITableView *tableView;
 @property (weak, nonatomic) IBOutlet UITextField *textField;
@@ -45,7 +45,7 @@
 {
     NSError *error;
     NSFetchRequest *request = [[NSFetchRequest alloc]initWithEntityName:@"Character"];
-    self.characters = [self.moc executeFetchRequest:request error:&error];
+    self.characters = [[self.moc executeFetchRequest:request error:&error]mutableCopy];
 
     NSSortDescriptor *sortByName = [[NSSortDescriptor alloc] initWithKey:@"name" ascending:YES];
     request.sortDescriptors = @[sortByName];
@@ -57,7 +57,7 @@
 {
     NSError *error;
     NSFetchRequest *request = [[NSFetchRequest alloc]initWithEntityName:@"Character"];
-    self.characters = [self.moc executeFetchRequest:request error:&error];
+    self.characters = [[self.moc executeFetchRequest:request error:&error]mutableCopy];
 
     NSSortDescriptor *sortByName = [[NSSortDescriptor alloc] initWithKey:@"name" ascending:YES];
     request.sortDescriptors = @[sortByName];
@@ -76,7 +76,7 @@
             [character setValue:d[@"actor"] forKey:@"actor"];
             [self.moc save:nil];
         }
-        self.characters = [self.moc executeFetchRequest:request error:&error];
+        self.characters = [[self.moc executeFetchRequest:request error:&error]mutableCopy];
         request.sortDescriptors = @[sortByName];
 
     }
@@ -121,7 +121,7 @@
 
         NSFetchRequest *request = [[NSFetchRequest alloc]initWithEntityName:@"Character"];
         NSError *error;
-        self.characters = [self.moc executeFetchRequest:request error:&error];
+        self.characters = [[self.moc executeFetchRequest:request error:&error]mutableCopy];
 
         NSSortDescriptor *sortByName = [[NSSortDescriptor alloc] initWithKey:@"name" ascending:YES];
         request.sortDescriptors = @[sortByName];
@@ -143,8 +143,38 @@
 
 - (void)tableView:(UITableView *)tableView didSelectRowAtIndexPath:(NSIndexPath *)indexPath
 {
-    // Update the delete button's title based on how many items are selected.
     [self updateButtonsToMatchTableState];
+
+}
+
+
+-(void)tableView:(UITableView *)tableView accessoryButtonTappedForRowWithIndexPath:
+(NSIndexPath *)indexPath
+{
+    self.tableView.editing = NO;
+    [self performSegueWithIdentifier:@"segueToDetail" sender:[self.tableView cellForRowAtIndexPath:indexPath]];
+}
+
+
+#pragma mark Segue
+
+- (void)prepareForSegue:(UIStoryboardSegue *)segue sender:(id)sender
+{
+    EditCharacterViewController *editCharacterVC = segue.destinationViewController;
+    editCharacterVC.moc = self.moc;
+
+    NSIndexPath *indexPath = [self.tableView indexPathForSelectedRow];
+    NSManagedObject *chosenCharacter = self.characters[indexPath.row];
+    editCharacterVC.chosenCharacter = chosenCharacter;
+}
+
+- (BOOL)shouldPerformSegueWithIdentifier:(NSString *)identifier sender:(id)sender
+{
+    if (self.tableView.editing == YES)
+    {
+        return NO;
+    }
+    return YES;
 }
 
 
@@ -163,6 +193,86 @@
     [self.tableView setEditing:NO animated:YES];
     [self updateButtonsToMatchTableState];
 }
+
+- (IBAction)onDeleteButtonPressed:(UIBarButtonItem *)sender
+{
+    NSString *actionTitle;
+    if (([[self.tableView indexPathsForSelectedRows] count] == 1)) {
+        actionTitle = NSLocalizedString(@"Are you sure you want to remove this item?", @"");
+    }
+    else
+    {
+        actionTitle = NSLocalizedString(@"Are you sure you want to remove these items?", @"");
+    }
+
+    NSString *cancelTitle = NSLocalizedString(@"Cancel", @"Cancel title for item removal action");
+    NSString *okTitle = NSLocalizedString(@"OK", @"OK title for item removal action");
+    UIActionSheet *actionSheet = [[UIActionSheet alloc] initWithTitle:actionTitle
+                                                             delegate:self
+                                                    cancelButtonTitle:cancelTitle
+                                               destructiveButtonTitle:okTitle
+                                                    otherButtonTitles:nil];
+
+    actionSheet.actionSheetStyle = UIActionSheetStyleDefault;
+
+    // Show from our table view (pops up in the middle of the table).
+    [actionSheet showInView:self.view];
+}
+
+//TODO:FIX THIS
+- (void)actionSheet:(UIActionSheet *)actionSheet clickedButtonAtIndex:(NSInteger)buttonIndex
+{
+    // The user tapped one of the OK/Cancel buttons.
+    if (buttonIndex == 0)
+    {
+        // Delete what the user selected.
+        NSArray *selectedRows = [self.tableView indexPathsForSelectedRows];
+
+        for (NSIndexPath *indexPath in selectedRows)
+        {
+            NSManagedObject *characterToDelete = self.characters[indexPath.row];
+            [self.moc deleteObject:characterToDelete];
+            [self.moc save:nil];
+        }
+
+        BOOL deleteSpecificRows = selectedRows.count > 0;
+        if (deleteSpecificRows)
+        {
+            // Build an NSIndexSet of all the objects to delete, so they can all be removed at once.
+            NSMutableIndexSet *indicesOfItemsToDelete = [NSMutableIndexSet new];
+            for (NSIndexPath *selectionIndex in selectedRows)
+            {
+                [indicesOfItemsToDelete addIndex:selectionIndex.row];
+            }
+            // Delete the objects from our data model.
+            [self.characters removeObjectsAtIndexes:indicesOfItemsToDelete];
+
+            // Tell the tableView that we deleted the objects
+            [self.tableView deleteRowsAtIndexPaths:selectedRows withRowAnimation:UITableViewRowAnimationAutomatic];
+        }
+        
+        else
+        {
+            // Delete everything, delete the objects from our data model.
+            for (int i = 0; i < self.characters.count; i++)
+            {
+                NSManagedObject *characterToDelete = self.characters[i];
+                [self.moc deleteObject:characterToDelete];
+                [self.moc save:nil];
+            }
+            [self.characters removeAllObjects];
+
+            // Tell the tableView that we deleted the objects.
+            // Because we are deleting all the rows, just reload the current table section
+            [self.tableView reloadSections:[NSIndexSet indexSetWithIndex:0] withRowAnimation:UITableViewRowAnimationAutomatic];
+        }
+
+        // Exit editing mode after the deletion.
+        [self.tableView setEditing:NO animated:YES];
+        [self updateButtonsToMatchTableState];
+    }
+}
+
 
 - (IBAction)onPlusButtonPressed:(UIBarButtonItem *)sender
 {
@@ -189,7 +299,7 @@
         [self.moc save:nil];
 
         NSFetchRequest *request = [[NSFetchRequest alloc]initWithEntityName:@"Character"];
-        self.characters = [self.moc executeFetchRequest:request error:nil];
+        self.characters = [[self.moc executeFetchRequest:request error:nil]mutableCopy];
 
         NSSortDescriptor *sortByName = [[NSSortDescriptor alloc] initWithKey:@"name" ascending:YES];
         request.sortDescriptors = @[sortByName];
@@ -199,29 +309,6 @@
     }
 }
 
-#pragma mark Segue
-
-- (void)prepareForSegue:(UIStoryboardSegue *)segue sender:(id)sender
-{
-    EditCharacterViewController *editCharacterVC = segue.destinationViewController;
-    editCharacterVC.moc = self.moc;
-
-    NSIndexPath *indexPath = [self.tableView indexPathForSelectedRow];
-    NSManagedObject *chosenCharacter = self.characters[indexPath.row];
-    editCharacterVC.chosenCharacter = chosenCharacter;
-}
-
-- (BOOL)shouldPerformSegueWithIdentifier:(NSString *)identifier sender:(id)sender
-{
-    if (self.tableView.editing == YES)
-    {
-        return NO;
-    }
-    else
-    {
-        return YES;
-    }
-}
 
 #pragma mark button state
 
