@@ -132,17 +132,45 @@
                             <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="zGa-qc-3Qh">
                                 <rect key="frame" x="0.0" y="516" width="320" height="52"/>
                                 <subviews>
-                                    <segmentedControl opaque="NO" contentMode="scaleToFill" fixedFrame="YES" contentHorizontalAlignment="left" contentVerticalAlignment="top" segmentControlStyle="plain" selectedSegmentIndex="0" translatesAutoresizingMaskIntoConstraints="NO" id="NvC-by-gxd">
-                                        <rect key="frame" x="93" y="12" width="117" height="29"/>
-                                        <segments>
-                                            <segment title="Male"/>
-                                            <segment title="Female"/>
-                                        </segments>
-                                    </segmentedControl>
+                                    <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="SOX-vk-1d4">
+                                        <rect key="frame" x="228" y="6" width="40" height="40"/>
+                                        <constraints>
+                                            <constraint firstAttribute="height" constant="40" id="ALO-Nd-TiN"/>
+                                            <constraint firstAttribute="width" constant="40" id="Ikc-5T-qzE"/>
+                                        </constraints>
+                                        <state key="normal" image="user_female2-50">
+                                            <color key="titleShadowColor" white="0.5" alpha="1" colorSpace="calibratedWhite"/>
+                                        </state>
+                                    </button>
+                                    <button opaque="NO" contentMode="scaleToFill" misplaced="YES" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="JWK-87-Q6d">
+                                        <rect key="frame" x="145" y="6" width="40" height="40"/>
+                                        <constraints>
+                                            <constraint firstAttribute="height" constant="40" id="ZW5-bJ-8e3"/>
+                                        </constraints>
+                                        <state key="normal" image="conference-50">
+                                            <color key="titleShadowColor" white="0.5" alpha="1" colorSpace="calibratedWhite"/>
+                                        </state>
+                                    </button>
+                                    <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="lEB-xc-Alo">
+                                        <rect key="frame" x="57" y="6" width="40" height="40"/>
+                                        <constraints>
+                                            <constraint firstAttribute="height" constant="40" id="qmK-im-3VK"/>
+                                            <constraint firstAttribute="width" constant="40" id="yQm-R0-l0t"/>
+                                        </constraints>
+                                        <state key="normal" image="user_male2-50">
+                                            <color key="titleShadowColor" white="0.5" alpha="1" colorSpace="calibratedWhite"/>
+                                        </state>
+                                    </button>
                                 </subviews>
                                 <color key="backgroundColor" red="0.40000000596046448" green="0.80000001192092896" blue="1" alpha="1" colorSpace="calibratedRGB"/>
                                 <constraints>
+                                    <constraint firstItem="lEB-xc-Alo" firstAttribute="top" secondItem="zGa-qc-3Qh" secondAttribute="top" constant="6" id="2G7-ki-ZCe"/>
+                                    <constraint firstAttribute="bottom" secondItem="JWK-87-Q6d" secondAttribute="bottom" constant="6" id="7WL-QA-6iX"/>
+                                    <constraint firstAttribute="trailing" secondItem="SOX-vk-1d4" secondAttribute="trailing" constant="52" id="EQQ-Ky-LgZ"/>
                                     <constraint firstAttribute="height" constant="52" id="I6F-5j-GUU"/>
+                                    <constraint firstAttribute="centerX" secondItem="JWK-87-Q6d" secondAttribute="centerX" id="NNP-2n-lHL"/>
+                                    <constraint firstItem="lEB-xc-Alo" firstAttribute="leading" secondItem="zGa-qc-3Qh" secondAttribute="leading" constant="57" id="rB6-W7-54Z"/>
+                                    <constraint firstItem="SOX-vk-1d4" firstAttribute="top" secondItem="zGa-qc-3Qh" secondAttribute="top" constant="6" id="wnI-Ec-67I"/>
                                 </constraints>
                             </view>
                         </subviews>
@@ -442,6 +470,11 @@
             <point key="canvasLocation" x="235" y="469"/>
         </scene>
     </scenes>
+    <resources>
+        <image name="conference-50" width="40" height="40"/>
+        <image name="user_female2-50" width="40" height="40"/>
+        <image name="user_male2-50" width="40" height="40"/>
+    </resources>
     <simulatedMetricsContainer key="defaultSimulatedMetrics">
         <simulatedStatusBarMetrics key="statusBar"/>
         <simulatedOrientationMetrics key="orientation"/>
