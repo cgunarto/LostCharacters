@@ -141,6 +141,9 @@
                                         <state key="normal" image="user_female2-50">
                                             <color key="titleShadowColor" white="0.5" alpha="1" colorSpace="calibratedWhite"/>
                                         </state>
+                                        <connections>
+                                            <action selector="onFemaleFilterButtonPressed:" destination="vXZ-lx-hvc" eventType="touchUpInside" id="uSN-Tv-mQP"/>
+                                        </connections>
                                     </button>
                                     <button opaque="NO" contentMode="scaleToFill" misplaced="YES" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="JWK-87-Q6d">
                                         <rect key="frame" x="145" y="6" width="40" height="40"/>
@@ -150,6 +153,9 @@
                                         <state key="normal" image="conference-50">
                                             <color key="titleShadowColor" white="0.5" alpha="1" colorSpace="calibratedWhite"/>
                                         </state>
+                                        <connections>
+                                            <action selector="onAllCharactersButtonPressed:" destination="vXZ-lx-hvc" eventType="touchUpInside" id="M4B-TC-tSA"/>
+                                        </connections>
                                     </button>
                                     <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="lEB-xc-Alo">
                                         <rect key="frame" x="57" y="6" width="40" height="40"/>
@@ -160,6 +166,9 @@
                                         <state key="normal" image="user_male2-50">
                                             <color key="titleShadowColor" white="0.5" alpha="1" colorSpace="calibratedWhite"/>
                                         </state>
+                                        <connections>
+                                            <action selector="onMaleFilterButtonPressed:" destination="vXZ-lx-hvc" eventType="touchUpInside" id="vAU-2f-Avf"/>
+                                        </connections>
                                     </button>
                                 </subviews>
                                 <color key="backgroundColor" red="0.40000000596046448" green="0.80000001192092896" blue="1" alpha="1" colorSpace="calibratedRGB"/>

@@ -295,6 +295,42 @@
     }
 }
 
+#pragma mark Filtering Buttons
+
+//Filters for Male characters
+- (IBAction)onMaleFilterButtonPressed:(UIButton *)sender
+{
+    NSFetchRequest *request = [[NSFetchRequest alloc]initWithEntityName:@"Character"];
+    NSSortDescriptor *sortByName = [[NSSortDescriptor alloc] initWithKey:@"name" ascending:YES];
+    request.sortDescriptors = @[sortByName];
+
+    request.predicate = [NSPredicate predicateWithFormat:@"gender == 'M'"];
+
+    self.characters = [[self.moc executeFetchRequest:request error:nil]mutableCopy];
+    [self.tableView reloadData];
+}
+
+
+//Filers for Female characters
+- (IBAction)onFemaleFilterButtonPressed:(UIButton *)sender
+{
+    NSFetchRequest *request = [[NSFetchRequest alloc]initWithEntityName:@"Character"];
+    NSSortDescriptor *sortByName = [[NSSortDescriptor alloc] initWithKey:@"name" ascending:YES];
+    request.sortDescriptors = @[sortByName];
+
+    request.predicate = [NSPredicate predicateWithFormat:@"gender == 'F'"];
+
+    self.characters = [[self.moc executeFetchRequest:request error:nil]mutableCopy];
+    [self.tableView reloadData];
+}
+
+- (IBAction)onAllCharactersButtonPressed:(UIButton *)sender
+{
+    [self retrieveCharacterAndSortByName];
+    [self.tableView reloadData];
+}
+
+
 #pragma mark button state
 
 - (void)updateButtonsToMatchTableState
