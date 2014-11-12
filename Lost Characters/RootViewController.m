@@ -219,7 +219,6 @@
     [actionSheet showInView:self.view];
 }
 
-//TODO:FIX THIS
 - (void)actionSheet:(UIActionSheet *)actionSheet clickedButtonAtIndex:(NSInteger)buttonIndex
 {
     // The user tapped one of the OK/Cancel buttons.

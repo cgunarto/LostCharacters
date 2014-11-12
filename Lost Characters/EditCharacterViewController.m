@@ -16,6 +16,12 @@
 @property (weak, nonatomic) IBOutlet UITextField *occupationTextField;
 @property (weak, nonatomic) IBOutlet UITextField *actorNameTextField;
 
+@property (nonatomic) UIImagePickerController *imagePickerController;
+@property (nonatomic) NSMutableArray *capturedImages;
+@property (weak, nonatomic) IBOutlet UIImageView *imageView;
+
+
+
 @end
 
 @implementation EditCharacterViewController
@@ -25,6 +31,8 @@
     [super viewDidLoad];
     [self setCharacterLabelInfo];
     [self disableAllTextFieldEditing];
+    self.capturedImages = [@[]mutableCopy];
+
 }
 
 - (void)setCharacterLabelInfo
@@ -114,6 +122,60 @@
     [self.moc save:nil];
     return YES;
 }
+
+- (IBAction)showImagePickerForEditPhoto:(UIButton *)sender
+{
+    [self showImagePickerForSourceType:UIImagePickerControllerSourceTypePhotoLibrary];
+}
+
+
+- (void)showImagePickerForSourceType:(UIImagePickerControllerSourceType)sourceType
+{
+    if (self.imageView.isAnimating)
+    {
+        [self.imageView stopAnimating];
+    }
+
+    if (self.capturedImages.count > 0)
+    {
+        [self.capturedImages removeAllObjects];
+    }
+
+    UIImagePickerController *imagePickerController = [[UIImagePickerController alloc] init];
+    imagePickerController.modalPresentationStyle = UIModalPresentationCurrentContext;
+    imagePickerController.sourceType = sourceType;
+    imagePickerController.delegate = self;
+
+    self.imagePickerController = imagePickerController;
+    [self presentViewController:self.imagePickerController animated:YES completion:nil];
+}
+
+
+#pragma mark - UIImagePickerControllerDelegate
+
+// This method is called when an image has been chosen from the library or taken from the camera.
+- (void)imagePickerController:(UIImagePickerController *)picker didFinishPickingMediaWithInfo:(NSDictionary *)info
+{
+    UIImage *image = [info valueForKey:UIImagePickerControllerOriginalImage];
+
+    [self.capturedImages addObject:image];
+    [self finishAndUpdate];
+}
+
+- (void)finishAndUpdate
+{
+    [self dismissViewControllerAnimated:YES completion:NULL];
+    [self.imageView setImage:[self.capturedImages objectAtIndex:0]];
+    [self.capturedImages removeAllObjects];
+
+    self.imagePickerController = nil;
+}
+
+- (void)imagePickerControllerDidCancel:(UIImagePickerController *)picker
+{
+    [self dismissViewControllerAnimated:YES completion:NULL];
+}
+
 
 
 
