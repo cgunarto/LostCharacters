@@ -176,6 +176,7 @@
 
 - (IBAction)onEditButtonPressed:(UIBarButtonItem *)sender
 {
+
     self.tableView.allowsMultipleSelectionDuringEditing = YES;
     [self.tableView setEditing:YES animated:YES];
     [self updateButtonsToMatchTableState];
