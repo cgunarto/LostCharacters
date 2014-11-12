@@ -17,6 +17,7 @@
 		4F3DFB091A12B836006814FF /* Lost_CharactersTests.m in Sources */ = {isa = PBXBuildFile; fileRef = 4F3DFB081A12B836006814FF /* Lost_CharactersTests.m */; };
 		4F3DFB131A12BA55006814FF /* lost.plist in Resources */ = {isa = PBXBuildFile; fileRef = 4F3DFB121A12BA55006814FF /* lost.plist */; };
 		4F3DFB161A12D003006814FF /* EditCharacterViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 4F3DFB151A12D003006814FF /* EditCharacterViewController.m */; };
+		4F3DFB191A12DCC4006814FF /* PassengerTableViewCell.m in Sources */ = {isa = PBXBuildFile; fileRef = 4F3DFB181A12DCC4006814FF /* PassengerTableViewCell.m */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
@@ -47,6 +48,8 @@
 		4F3DFB121A12BA55006814FF /* lost.plist */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.plist.xml; path = lost.plist; sourceTree = "<group>"; };
 		4F3DFB141A12D002006814FF /* EditCharacterViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = EditCharacterViewController.h; sourceTree = "<group>"; };
 		4F3DFB151A12D003006814FF /* EditCharacterViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = EditCharacterViewController.m; sourceTree = "<group>"; };
+		4F3DFB171A12DCC4006814FF /* PassengerTableViewCell.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = PassengerTableViewCell.h; sourceTree = "<group>"; };
+		4F3DFB181A12DCC4006814FF /* PassengerTableViewCell.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = PassengerTableViewCell.m; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -94,6 +97,7 @@
 				4F3DFAF41A12B836006814FF /* RootViewController.m */,
 				4F3DFB141A12D002006814FF /* EditCharacterViewController.h */,
 				4F3DFB151A12D003006814FF /* EditCharacterViewController.m */,
+				4F3DFB1A1A12DCC7006814FF /* Model */,
 				4F3DFAF61A12B836006814FF /* Main.storyboard */,
 				4F3DFAF91A12B836006814FF /* Images.xcassets */,
 				4F3DFAFB1A12B836006814FF /* LaunchScreen.xib */,
@@ -128,6 +132,15 @@
 				4F3DFB071A12B836006814FF /* Info.plist */,
 			);
 			name = "Supporting Files";
+			sourceTree = "<group>";
+		};
+		4F3DFB1A1A12DCC7006814FF /* Model */ = {
+			isa = PBXGroup;
+			children = (
+				4F3DFB171A12DCC4006814FF /* PassengerTableViewCell.h */,
+				4F3DFB181A12DCC4006814FF /* PassengerTableViewCell.m */,
+			);
+			name = Model;
 			sourceTree = "<group>";
 		};
 /* End PBXGroup section */
@@ -233,6 +246,7 @@
 			files = (
 				4F3DFAEF1A12B836006814FF /* AppDelegate.m in Sources */,
 				4F3DFAF21A12B836006814FF /* Lost_Characters.xcdatamodeld in Sources */,
+				4F3DFB191A12DCC4006814FF /* PassengerTableViewCell.m in Sources */,
 				4F3DFAF51A12B836006814FF /* RootViewController.m in Sources */,
 				4F3DFB161A12D003006814FF /* EditCharacterViewController.m in Sources */,
 				4F3DFAEC1A12B836006814FF /* main.m in Sources */,

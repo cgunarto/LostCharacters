@@ -9,7 +9,7 @@
 #import "RootViewController.h"
 #import "AppDelegate.h"
 #import "EditCharacterViewController.h"
-
+#import "PassengerTableViewCell.h"
 
 @interface RootViewController () <UITableViewDelegate, UITableViewDataSource>
 
@@ -31,11 +31,11 @@
     AppDelegate *delegate = [[UIApplication sharedApplication]delegate];
     self.moc = delegate.managedObjectContext;
 
-    [self loadCharactersArray];
+    [self savePlistToCoreData];
 
 }
 
-- (void)loadCharactersArray
+- (void)savePlistToCoreData
 {
     NSError *error;
     NSFetchRequest *request = [[NSFetchRequest alloc]initWithEntityName:@"Character"];
@@ -74,12 +74,12 @@
 - (UITableViewCell *)tableView:(UITableView *)tableView cellForRowAtIndexPath:(NSIndexPath *)indexPath
 {
     NSManagedObject *character = self.characters[indexPath.row];
-    UITableViewCell *cell = [tableView dequeueReusableCellWithIdentifier:@"cell" forIndexPath:indexPath];
+    PassengerTableViewCell *passengerCell = [tableView dequeueReusableCellWithIdentifier:@"cell" forIndexPath:indexPath];
 
-    cell.textLabel.text = [character valueForKey:@"name"];
-    cell.detailTextLabel.text = [character valueForKey:@"actor"];
+    passengerCell.nameLabel.text = [character valueForKey:@"name"];
+    passengerCell.actorNameLabel.text = [character valueForKey:@"actor"];
 
-    return cell;
+    return passengerCell;
 }
 
 
@@ -106,6 +106,16 @@
     {
         NSManagedObject *character = [NSEntityDescription insertNewObjectForEntityForName:@"Character" inManagedObjectContext:self.moc];
         [character setValue:self.textField.text forKey:@"name"];
+
+        [self.moc save:nil];
+
+        NSFetchRequest *request = [[NSFetchRequest alloc]initWithEntityName:@"Character"];
+        self.characters = [self.moc executeFetchRequest:request error:nil];
+
+        NSSortDescriptor *sortByName = [[NSSortDescriptor alloc] initWithKey:@"name" ascending:YES];
+        request.sortDescriptors = @[sortByName];
+
+        [self.tableView reloadData];
     }
 }
 

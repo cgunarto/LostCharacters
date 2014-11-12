@@ -9,6 +9,7 @@
 #import "EditCharacterViewController.h"
 
 @interface EditCharacterViewController ()
+@property (weak, nonatomic) IBOutlet UILabel *nameLabel;
 
 @end
 
@@ -17,6 +18,8 @@
 - (void)viewDidLoad
 {
     [super viewDidLoad];
+
+    self.nameLabel.text = [self.chosenCharacter valueForKey:@"name"];
 }
 
 
