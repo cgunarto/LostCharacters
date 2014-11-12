@@ -17,8 +17,8 @@
                         <rect key="frame" x="0.0" y="0.0" width="320" height="568"/>
                         <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
                         <subviews>
-                            <tableView clipsSubviews="YES" contentMode="scaleToFill" alwaysBounceVertical="YES" dataMode="prototypes" style="plain" separatorStyle="default" rowHeight="112" sectionHeaderHeight="22" sectionFooterHeight="22" translatesAutoresizingMaskIntoConstraints="NO" id="4Eu-uc-15R">
-                                <rect key="frame" x="0.0" y="0.0" width="320" height="568"/>
+                            <tableView clipsSubviews="YES" contentMode="scaleToFill" alwaysBounceVertical="YES" dataMode="prototypes" style="plain" separatorStyle="default" allowsSelection="NO" allowsSelectionDuringEditing="YES" allowsMultipleSelectionDuringEditing="YES" rowHeight="112" sectionHeaderHeight="22" sectionFooterHeight="22" translatesAutoresizingMaskIntoConstraints="NO" id="4Eu-uc-15R">
+                                <rect key="frame" x="0.0" y="0.0" width="320" height="517"/>
                                 <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
                                 <prototypes>
                                     <tableViewCell contentMode="scaleToFill" selectionStyle="default" accessoryType="disclosureIndicator" indentationWidth="10" reuseIdentifier="cell" rowHeight="112" id="0G7-yD-7Iy" customClass="PassengerTableViewCell">
@@ -93,12 +93,22 @@
                                     <outlet property="delegate" destination="vXZ-lx-hvc" id="CDn-S9-B15"/>
                                 </connections>
                             </tableView>
+                            <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="zGa-qc-3Qh">
+                                <rect key="frame" x="0.0" y="516" width="320" height="52"/>
+                                <color key="backgroundColor" red="0.40000000596046448" green="0.80000001192092896" blue="1" alpha="1" colorSpace="calibratedRGB"/>
+                                <constraints>
+                                    <constraint firstAttribute="height" constant="52" id="I6F-5j-GUU"/>
+                                </constraints>
+                            </view>
                         </subviews>
                         <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="calibratedWhite"/>
                         <constraints>
+                            <constraint firstAttribute="trailingMargin" secondItem="zGa-qc-3Qh" secondAttribute="trailing" constant="-16" id="DxB-vL-1Oc"/>
+                            <constraint firstItem="zGa-qc-3Qh" firstAttribute="leading" secondItem="kh9-bI-dsS" secondAttribute="leadingMargin" constant="-16" id="GOp-jw-Mwj"/>
                             <constraint firstItem="4Eu-uc-15R" firstAttribute="top" secondItem="kh9-bI-dsS" secondAttribute="topMargin" id="Glp-2g-epx"/>
                             <constraint firstAttribute="trailingMargin" secondItem="4Eu-uc-15R" secondAttribute="trailing" constant="-16" id="Ncx-N9-OPe"/>
-                            <constraint firstItem="2fi-mo-0CV" firstAttribute="top" secondItem="4Eu-uc-15R" secondAttribute="bottom" id="cVD-R2-ffD"/>
+                            <constraint firstItem="2fi-mo-0CV" firstAttribute="top" secondItem="zGa-qc-3Qh" secondAttribute="bottom" id="ONb-VK-Cav"/>
+                            <constraint firstItem="2fi-mo-0CV" firstAttribute="top" secondItem="4Eu-uc-15R" secondAttribute="bottom" constant="51" id="cVD-R2-ffD"/>
                             <constraint firstItem="4Eu-uc-15R" firstAttribute="leading" secondItem="kh9-bI-dsS" secondAttribute="leadingMargin" constant="-16" id="tac-Wt-gNU"/>
                         </constraints>
                     </view>
@@ -114,20 +124,35 @@
                                 <outlet property="delegate" destination="vXZ-lx-hvc" id="9Bm-yS-39Z"/>
                             </connections>
                         </textField>
-                        <barButtonItem key="rightBarButtonItem" systemItem="add" id="lIu-76-Boe">
-                            <connections>
-                                <action selector="onPlusButtonPressed:" destination="vXZ-lx-hvc" id="Xwv-3G-ID7"/>
-                            </connections>
-                        </barButtonItem>
                     </navigationItem>
                     <connections>
+                        <outlet property="addButton" destination="H3a-zy-7Pd" id="8cC-1N-kuL"/>
+                        <outlet property="cancelButton" destination="s3q-hg-oO7" id="liJ-QK-Rcf"/>
+                        <outlet property="deleteButton" destination="3F8-7O-aCz" id="NlE-RN-XWk"/>
+                        <outlet property="editButton" destination="VAv-n6-QdP" id="LyW-9i-J1d"/>
                         <outlet property="tableView" destination="4Eu-uc-15R" id="gyc-v3-cEr"/>
                         <outlet property="textField" destination="1jQ-Cu-DyV" id="Ake-xK-noh"/>
                     </connections>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="x5A-6p-PRh" sceneMemberID="firstResponder"/>
+                <barButtonItem title="Delete" id="3F8-7O-aCz"/>
+                <barButtonItem systemItem="add" id="H3a-zy-7Pd">
+                    <connections>
+                        <action selector="onPlusButtonPressed:" destination="vXZ-lx-hvc" id="Ddk-sV-85h"/>
+                    </connections>
+                </barButtonItem>
+                <barButtonItem systemItem="cancel" id="s3q-hg-oO7">
+                    <connections>
+                        <action selector="onCancelButtonPressed:" destination="vXZ-lx-hvc" id="gNX-4G-ogk"/>
+                    </connections>
+                </barButtonItem>
+                <barButtonItem systemItem="edit" id="VAv-n6-QdP">
+                    <connections>
+                        <action selector="onEditButtonPressed:" destination="vXZ-lx-hvc" id="c1B-fM-kFg"/>
+                    </connections>
+                </barButtonItem>
             </objects>
-            <point key="canvasLocation" x="671" y="468"/>
+            <point key="canvasLocation" x="688" y="469"/>
         </scene>
         <!--Edit Character View Controller-->
         <scene sceneID="FcD-7U-dfC">

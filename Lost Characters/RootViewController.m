@@ -19,6 +19,12 @@
 @property (weak, nonatomic) IBOutlet UITableView *tableView;
 @property (weak, nonatomic) IBOutlet UITextField *textField;
 
+@property (nonatomic,strong) IBOutlet UIBarButtonItem *editButton;
+@property (nonatomic,strong) IBOutlet UIBarButtonItem *cancelButton;
+@property (nonatomic,strong) IBOutlet UIBarButtonItem *deleteButton;
+@property (nonatomic,strong) IBOutlet UIBarButtonItem *addButton;
+
+
 
 @end
 
@@ -31,10 +37,8 @@
     AppDelegate *delegate = [[UIApplication sharedApplication]delegate];
     self.moc = delegate.managedObjectContext;
 
-    self.tableView.allowsMultipleSelectionDuringEditing = NO;
-
     [self savePlistToCoreData];
-
+    [self updateButtonsToMatchTableState];
 }
 
 - (void)viewDidAppear:(BOOL)animated
@@ -93,7 +97,11 @@
     passengerCell.nameLabel.text = [character valueForKey:@"name"];
     passengerCell.actorNameLabel.text = [character valueForKey:@"actor"];
     passengerCell.occupationLabel.text = [character valueForKey:@"occupation"];
+    passengerCell.seatLabel.text = [character valueForKey:@"seatNumber"];
+    passengerCell.genderLabel.text = [character valueForKey:@"gender"];
 
+    NSString *ageString = [NSString stringWithFormat:@"%@",[character valueForKey:@"age"]];
+    passengerCell.ageLabel.text = ageString;
     return passengerCell;
 }
 
@@ -101,6 +109,7 @@
     // Return YES if you want the specified item to be editable.
     return YES;
 }
+
 
 - (void)tableView:(UITableView *)tableView commitEditingStyle:(UITableViewCellEditingStyle)editingStyle forRowAtIndexPath:(NSIndexPath *)indexPath
 {
@@ -126,7 +135,34 @@
     return @"SMOKE MONSTER";
 }
 
-#pragma mark Add Character
+- (void)tableView:(UITableView *)tableView didDeselectRowAtIndexPath:(NSIndexPath *)indexPath
+{
+    // Update the delete button's title based on how many items are selected.
+    [self updateDeleteButtonTitle];
+}
+
+- (void)tableView:(UITableView *)tableView didSelectRowAtIndexPath:(NSIndexPath *)indexPath
+{
+    // Update the delete button's title based on how many items are selected.
+    [self updateButtonsToMatchTableState];
+}
+
+
+
+#pragma mark Button Presses
+
+- (IBAction)onEditButtonPressed:(UIBarButtonItem *)sender
+{
+    self.tableView.allowsMultipleSelectionDuringEditing = YES;
+    [self.tableView setEditing:YES animated:YES];
+    [self updateButtonsToMatchTableState];
+}
+
+- (IBAction)onCancelButtonPressed:(UIBarButtonItem *)sender
+{
+    [self.tableView setEditing:NO animated:YES];
+    [self updateButtonsToMatchTableState];
+}
 
 - (IBAction)onPlusButtonPressed:(UIBarButtonItem *)sender
 {
@@ -175,6 +211,66 @@
     editCharacterVC.chosenCharacter = chosenCharacter;
 }
 
+- (BOOL)shouldPerformSegueWithIdentifier:(NSString *)identifier sender:(id)sender
+{
+    if (self.tableView.editing == YES)
+    {
+        return NO;
+    }
+    else
+    {
+        return YES;
+    }
+}
+
+#pragma mark button state
+
+- (void)updateButtonsToMatchTableState
+{
+    if (self.tableView.editing)
+    {
+        // Show the option to cancel the edit.
+        self.navigationItem.leftBarButtonItem = self.cancelButton;
+
+        [self updateDeleteButtonTitle];
+
+        self.navigationItem.rightBarButtonItem = self.deleteButton;
+    }
+    else
+    {
+        self.navigationItem.rightBarButtonItem = self.addButton;
+        // Show the edit button, but disable the edit button if there's nothing to edit.
+        if (self.characters.count > 0)
+        {
+            self.editButton.enabled = YES;
+        }
+        else
+        {
+            self.editButton.enabled = NO;
+        }
+        self.navigationItem.leftBarButtonItem = self.editButton;
+    }
+}
+
+- (void)updateDeleteButtonTitle
+{
+    // Update the delete button's title, based on how many items are selected
+    NSArray *selectedRows = [self.tableView indexPathsForSelectedRows];
+
+    BOOL allItemsAreSelected = selectedRows.count == self.characters.count;
+    BOOL noItemsAreSelected = selectedRows.count == 0;
+
+    if (allItemsAreSelected || noItemsAreSelected)
+    {
+        self.deleteButton.title = NSLocalizedString(@"Delete All", @"");
+    }
+    else
+    {
+        NSString *titleFormatString =
+        NSLocalizedString(@"Delete (%d)", @"Title for delete button with placeholder for number");
+        self.deleteButton.title = [NSString stringWithFormat:titleFormatString, selectedRows.count];
+    }
+}
 
 
 
