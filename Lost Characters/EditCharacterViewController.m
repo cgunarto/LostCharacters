@@ -26,6 +26,8 @@
 
 @implementation EditCharacterViewController
 
+#pragma mark View Controller Life Cycle
+
 - (void)viewDidLoad
 {
     [super viewDidLoad];
@@ -34,6 +36,8 @@
     self.capturedImages = [@[]mutableCopy];
 
 }
+
+#pragma mark Helper Method
 
 - (void)setCharacterLabelAndImageInfo
 {
@@ -68,6 +72,8 @@
         self.imageView.image = [UIImage imageWithData:imageData];
     }
 }
+
+#pragma mark TextField related methods
 
 - (IBAction)onEditButtonPressed:(UIBarButtonItem *)sender
 {
@@ -128,6 +134,8 @@
     return YES;
 }
 
+#pragma mark - UIImagePickerController Methods
+
 - (IBAction)showImagePickerForEditPhoto:(UIButton *)sender
 {
     UIImagePickerController *imagePickerController = [[UIImagePickerController alloc] init];
@@ -138,8 +146,6 @@
     self.imagePickerController = imagePickerController;
     [self presentViewController:self.imagePickerController animated:YES completion:nil];
 }
-
-#pragma mark - UIImagePickerControllerDelegate
 
 // This method is called when an image has been chosen from the library or taken from the camera.
 - (void)imagePickerController:(UIImagePickerController *)picker didFinishPickingMediaWithInfo:(NSDictionary *)info
