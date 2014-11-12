@@ -30,6 +30,8 @@
 
 @implementation RootViewController
 
+#pragma mark View Controller Life Cycle
+
 - (void)viewDidLoad
 {
     [super viewDidLoad];
@@ -41,19 +43,17 @@
     [self updateButtonsToMatchTableState];
 }
 
+
 - (void)viewDidAppear:(BOOL)animated
 {
-    NSError *error;
-    NSFetchRequest *request = [[NSFetchRequest alloc]initWithEntityName:@"Character"];
-    self.characters = [[self.moc executeFetchRequest:request error:&error]mutableCopy];
-
-    NSSortDescriptor *sortByName = [[NSSortDescriptor alloc] initWithKey:@"name" ascending:YES];
-    request.sortDescriptors = @[sortByName];
-
+    [self retrieveCharacterAndSortByName];
     [self.tableView reloadData];
 }
 
-- (void)savePlistToCoreData
+
+#pragma mark Helper Methods
+
+- (void)retrieveCharacterAndSortByName
 {
     NSError *error;
     NSFetchRequest *request = [[NSFetchRequest alloc]initWithEntityName:@"Character"];
@@ -61,6 +61,12 @@
 
     NSSortDescriptor *sortByName = [[NSSortDescriptor alloc] initWithKey:@"name" ascending:YES];
     request.sortDescriptors = @[sortByName];
+}
+
+//Get initial information from pList and populate core datat with it if empty
+- (void)savePlistToCoreData
+{
+    [self retrieveCharacterAndSortByName];
 
     //if core data is empty, pre-populate it with the information from the pList
     if (self.characters.count == 0)
@@ -71,18 +77,19 @@
 
         for (NSDictionary *d in self.lostPlistArray)
         {
-            NSManagedObject *character = [NSEntityDescription insertNewObjectForEntityForName:@"Character" inManagedObjectContext:self.moc];
+            NSManagedObject *character = [NSEntityDescription insertNewObjectForEntityForName:@"Character"
+                                                                       inManagedObjectContext:self.moc];
             [character setValue:d[@"passenger"] forKey:@"name"];
             [character setValue:d[@"actor"] forKey:@"actor"];
             [self.moc save:nil];
         }
-        self.characters = [[self.moc executeFetchRequest:request error:&error]mutableCopy];
-        request.sortDescriptors = @[sortByName];
 
+    [self retrieveCharacterAndSortByName];
     }
-
     [self.tableView reloadData];
 }
+
+#pragma mark UITableView Delegate Methods
 
 - (NSInteger)tableView:(UITableView *)tableView numberOfRowsInSection:(NSInteger)section
 {
@@ -113,7 +120,6 @@
     return YES;
 }
 
-
 - (void)tableView:(UITableView *)tableView commitEditingStyle:(UITableViewCellEditingStyle)editingStyle forRowAtIndexPath:(NSIndexPath *)indexPath
 {
     if (editingStyle == UITableViewCellEditingStyleDelete)
@@ -122,13 +128,7 @@
         [self.moc deleteObject:characterToDelete];
         [self.moc save:nil];
 
-        NSFetchRequest *request = [[NSFetchRequest alloc]initWithEntityName:@"Character"];
-        NSError *error;
-        self.characters = [[self.moc executeFetchRequest:request error:&error]mutableCopy];
-
-        NSSortDescriptor *sortByName = [[NSSortDescriptor alloc] initWithKey:@"name" ascending:YES];
-        request.sortDescriptors = @[sortByName];
-
+        [self retrieveCharacterAndSortByName];
         [self.tableView reloadData];
     }
 }
@@ -150,15 +150,6 @@
 
 }
 
-
--(void)tableView:(UITableView *)tableView accessoryButtonTappedForRowWithIndexPath:
-(NSIndexPath *)indexPath
-{
-    self.tableView.editing = NO;
-    [self performSegueWithIdentifier:@"segueToDetail" sender:[self.tableView cellForRowAtIndexPath:indexPath]];
-}
-
-
 #pragma mark Segue
 
 - (void)prepareForSegue:(UIStoryboardSegue *)segue sender:(id)sender
@@ -179,7 +170,6 @@
     }
     return YES;
 }
-
 
 
 #pragma mark Button Presses
@@ -297,20 +287,13 @@
     {
         NSManagedObject *character = [NSEntityDescription insertNewObjectForEntityForName:@"Character" inManagedObjectContext:self.moc];
         [character setValue:self.textField.text forKey:@"name"];
-
         [self.moc save:nil];
 
-        NSFetchRequest *request = [[NSFetchRequest alloc]initWithEntityName:@"Character"];
-        self.characters = [[self.moc executeFetchRequest:request error:nil]mutableCopy];
-
-        NSSortDescriptor *sortByName = [[NSSortDescriptor alloc] initWithKey:@"name" ascending:YES];
-        request.sortDescriptors = @[sortByName];
-
+        [self retrieveCharacterAndSortByName];
         self.textField.text = @"";
         [self.tableView reloadData];
     }
 }
-
 
 #pragma mark button state
 
