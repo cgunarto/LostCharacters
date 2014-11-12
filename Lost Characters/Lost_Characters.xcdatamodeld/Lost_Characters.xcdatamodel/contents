@@ -6,7 +6,7 @@
         <attribute name="gender" optional="YES" attributeType="String" syncable="YES"/>
         <attribute name="name" optional="YES" attributeType="String" syncable="YES"/>
         <attribute name="occupation" optional="YES" attributeType="String" syncable="YES"/>
-        <attribute name="planeSeat" optional="YES" attributeType="String" syncable="YES"/>
+        <attribute name="seatNumber" optional="YES" attributeType="String" syncable="YES"/>
     </entity>
     <elements>
         <element name="Character" positionX="-54" positionY="-9" width="128" height="135"/>
