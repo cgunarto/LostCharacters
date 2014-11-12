@@ -125,31 +125,14 @@
 
 - (IBAction)showImagePickerForEditPhoto:(UIButton *)sender
 {
-    [self showImagePickerForSourceType:UIImagePickerControllerSourceTypePhotoLibrary];
-}
-
-
-- (void)showImagePickerForSourceType:(UIImagePickerControllerSourceType)sourceType
-{
-    if (self.imageView.isAnimating)
-    {
-        [self.imageView stopAnimating];
-    }
-
-    if (self.capturedImages.count > 0)
-    {
-        [self.capturedImages removeAllObjects];
-    }
-
     UIImagePickerController *imagePickerController = [[UIImagePickerController alloc] init];
     imagePickerController.modalPresentationStyle = UIModalPresentationCurrentContext;
-    imagePickerController.sourceType = sourceType;
+    imagePickerController.sourceType = UIImagePickerControllerSourceTypePhotoLibrary;
     imagePickerController.delegate = self;
 
     self.imagePickerController = imagePickerController;
     [self presentViewController:self.imagePickerController animated:YES completion:nil];
 }
-
 
 #pragma mark - UIImagePickerControllerDelegate
 
@@ -157,18 +140,10 @@
 - (void)imagePickerController:(UIImagePickerController *)picker didFinishPickingMediaWithInfo:(NSDictionary *)info
 {
     UIImage *image = [info valueForKey:UIImagePickerControllerOriginalImage];
-
-    [self.capturedImages addObject:image];
-    [self finishAndUpdate];
-}
-
-- (void)finishAndUpdate
-{
     [self dismissViewControllerAnimated:YES completion:NULL];
-    [self.imageView setImage:[self.capturedImages objectAtIndex:0]];
-    [self.capturedImages removeAllObjects];
-
+    [self.imageView setImage:image];
     self.imagePickerController = nil;
+
 }
 
 - (void)imagePickerControllerDidCancel:(UIImagePickerController *)picker
