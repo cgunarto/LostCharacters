@@ -21,7 +21,7 @@
                                 <rect key="frame" x="0.0" y="0.0" width="320" height="568"/>
                                 <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
                                 <prototypes>
-                                    <tableViewCell contentMode="scaleToFill" selectionStyle="default" accessoryType="disclosureIndicator" indentationWidth="10" reuseIdentifier="cell" rowHeight="112" id="0G7-yD-7Iy" customClass="PassengerTableViewCell">
+                                    <tableViewCell contentMode="scaleToFill" selectionStyle="default" accessoryType="detailButton" indentationWidth="10" reuseIdentifier="cell" rowHeight="112" id="0G7-yD-7Iy" customClass="PassengerTableViewCell">
                                         <rect key="frame" x="0.0" y="0.0" width="320" height="44"/>
                                         <autoresizingMask key="autoresizingMask"/>
                                         <tableViewCellContentView key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" tableViewCell="0G7-yD-7Iy" id="PbF-Gx-mUw">
@@ -84,7 +84,7 @@
                                             <outlet property="occupationLabel" destination="gtB-Qe-XxM" id="tvE-Ky-woe"/>
                                             <outlet property="profileImageView" destination="0jc-mu-Q02" id="uw8-Zb-3F9"/>
                                             <outlet property="seatLabel" destination="Cms-li-xcX" id="8Jo-CX-vsj"/>
-                                            <segue destination="jmC-Ye-ocT" kind="push" id="Ny8-pz-htC"/>
+                                            <segue destination="jmC-Ye-ocT" kind="push" trigger="accessoryAction" id="Qc9-nH-efc"/>
                                         </connections>
                                     </tableViewCell>
                                 </prototypes>
