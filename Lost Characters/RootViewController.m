@@ -35,6 +35,18 @@
 
 }
 
+- (void)viewDidAppear:(BOOL)animated
+{
+    NSError *error;
+    NSFetchRequest *request = [[NSFetchRequest alloc]initWithEntityName:@"Character"];
+    self.characters = [self.moc executeFetchRequest:request error:&error];
+
+    NSSortDescriptor *sortByName = [[NSSortDescriptor alloc] initWithKey:@"name" ascending:YES];
+    request.sortDescriptors = @[sortByName];
+
+    [self.tableView reloadData];
+}
+
 - (void)savePlistToCoreData
 {
     NSError *error;
@@ -78,6 +90,7 @@
 
     passengerCell.nameLabel.text = [character valueForKey:@"name"];
     passengerCell.actorNameLabel.text = [character valueForKey:@"actor"];
+    passengerCell.occupationLabel.text = [character valueForKey:@"occupation"];
 
     return passengerCell;
 }
@@ -115,6 +128,7 @@
         NSSortDescriptor *sortByName = [[NSSortDescriptor alloc] initWithKey:@"name" ascending:YES];
         request.sortDescriptors = @[sortByName];
 
+        self.textField.text = @"";
         [self.tableView reloadData];
     }
 }
