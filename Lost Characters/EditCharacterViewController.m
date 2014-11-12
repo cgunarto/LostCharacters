@@ -8,7 +8,8 @@
 
 #import "EditCharacterViewController.h"
 
-@interface EditCharacterViewController ()<UITextFieldDelegate>
+//TODO: Change the edit button in second page and save only when all the fields are filled
+@interface EditCharacterViewController ()<UITextFieldDelegate, UINavigationControllerDelegate, UIImagePickerControllerDelegate>
 @property (weak, nonatomic) IBOutlet UITextField *nameTextField;
 @property (weak, nonatomic) IBOutlet UITextField *ageTextField;
 @property (weak, nonatomic) IBOutlet UITextField *seatTextField;
