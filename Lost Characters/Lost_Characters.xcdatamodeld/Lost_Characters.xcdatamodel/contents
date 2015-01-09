@@ -8,8 +8,9 @@
         <attribute name="name" optional="YES" attributeType="String" syncable="YES"/>
         <attribute name="occupation" optional="YES" attributeType="String" syncable="YES"/>
         <attribute name="seatNumber" optional="YES" attributeType="String" syncable="YES"/>
+        <relationship name="lover" optional="YES" maxCount="1" deletionRule="Nullify" destinationEntity="Character" inverseName="lover" inverseEntity="Character" syncable="YES"/>
     </entity>
     <elements>
-        <element name="Character" positionX="-54" positionY="-9" width="128" height="150"/>
+        <element name="Character" positionX="-54" positionY="-9" width="128" height="165"/>
     </elements>
 </model>

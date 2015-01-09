@@ -11,7 +11,7 @@
 #import "EditCharacterViewController.h"
 #import "PassengerTableViewCell.h"
 
-@interface RootViewController () <UITableViewDelegate, UITableViewDataSource>
+@interface RootViewController () <UITableViewDelegate, UITableViewDataSource, UIActionSheetDelegate>
 
 @property NSManagedObjectContext *moc;
 @property NSMutableArray *characters;
